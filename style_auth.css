@@ -1,0 +1,612 @@
+/* style_auth.css - Стили для страниц авторизации и регистрации */
+:root {
+    --primary: #0f172a;
+    --primary-accent: #3b82f6;
+    --bg: #f8fafc;
+    --card: #ffffff;
+    --text: #0f172a;
+    --text-light: #64748b;
+    --border: #e2e8f0;
+    --radius: 16px;
+    --shadow: 0 10px 25px -5px rgb(0 0 0 / 0.1);
+    --error-bg: #fef2f2;
+    --error-text: #b91c1c;
+    --error-border: #fecaca;
+    --success-bg: #f0fdf4;
+    --success-text: #166534;
+    --success-border: #bbf7d0;
+}
+
+*, *::before, *::after {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    font-family: system-ui, -apple-system, sans-serif;
+}
+
+body {
+    background: var(--bg);
+    color: var(--text);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh;
+    padding: 20px;
+}
+
+.auth-wrapper {
+    width: 100%;
+    max-width: 520px;
+}
+
+.card {
+    background: var(--card);
+    padding: 2.5rem;
+    border-radius: var(--radius);
+    box-shadow: var(--shadow);
+    width: 100%;
+}
+
+.login-header {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    margin-bottom: 1.5rem;
+    justify-content: flex-start;
+}
+
+.login-logo {
+    height: 78px;
+    width: auto;
+}
+
+.login-title-block {
+    display: flex;
+    flex-direction: column;
+    line-height: 1.3;
+}
+
+.login-title-block h2 {
+    margin: 0;
+    font-size: 1.5rem;
+    color: var(--primary);
+    text-align: left;
+}
+
+.login-subtitle {
+    margin: 0;
+    font-size: 0.9rem;
+    color: var(--text-light);
+    font-weight: 400;
+}
+
+.form-group { margin-bottom: 1.2rem; }
+
+label {
+    display: block;
+    margin-bottom: 0.6rem;
+    font-weight: 600;
+    font-size: 0.9rem;
+    color: var(--text);
+}
+
+input, select, textarea {
+    width: 100%;
+    padding: 1rem;
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    font-size: 1rem;
+    transition: 0.2s;
+    background: #fff;
+}
+
+input:focus, select:focus, textarea:focus {
+    outline: none;
+    border-color: var(--primary-accent);
+    box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.15);
+}
+
+button, .btn {
+    width: 100%;
+    padding: 1rem;
+    background: var(--primary);
+    color: #fff;
+    border: none;
+    border-radius: 8px;
+    font-size: 1rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: 0.2s;
+    margin-top: 0.5rem;
+    text-decoration: none;
+    display: inline-block;
+    text-align: center;
+}
+
+button:hover, .btn:hover {
+    background: #1e293b;
+    transform: translateY(-1px);
+}
+
+/* Сообщения об ошибках и успехе */
+.error {
+    padding: 0.9rem;
+    border-radius: 8px;
+    margin-bottom: 1.2rem;
+    font-size: 0.9rem;
+    text-align: center;
+    background: var(--error-bg);
+    color: var(--error-text);
+    border: 1px solid var(--error-border);
+}
+
+.error a {
+    color: #b91c1c;
+    text-decoration: underline;
+    font-weight: 500;
+}
+
+.success {
+    padding: 12px;
+    border-radius: 8px;
+    margin-bottom: 1rem;
+    background: var(--success-bg);
+    color: var(--success-text);
+    border: 1px solid var(--success-border);
+    font-size: 0.9rem;
+    text-align: center;
+}
+
+.links {
+    text-align: center;
+    margin-top: 1.8rem;
+    font-size: 0.9rem;
+    color: var(--text-light);
+}
+
+.links a {
+    color: var(--primary-accent);
+    text-decoration: none;
+    font-weight: 500;
+}
+
+.links a:hover {
+    text-decoration: underline;
+}
+
+/* Чекбокс согласия */
+.checkbox-group {
+    display: flex;
+    align-items: flex-start;
+    gap: 10px;
+    margin-bottom: 1.2rem;
+}
+
+.checkbox-group input {
+    width: auto !important;
+    margin-top: 3px;
+    flex-shrink: 0;
+}
+
+.checkbox-group label {
+    font-weight: 400;
+    font-size: 0.85rem;
+    line-height: 1.4;
+    cursor: pointer;
+}
+
+.checkbox-group a {
+    color: var(--primary-accent);
+    text-decoration: underline;
+}
+
+/* Состояния полей валидации */
+.form-group.hidden {
+    display: none !important;
+}
+
+.form-group.error input,
+.form-group.error select {
+    border-color: #dc2626;
+    background-color: #fef2f2;
+}
+
+.form-group.valid input,
+.form-group.valid select {
+    border-color: #10b981;
+}
+
+.error-hint {
+    color: #dc2626;
+    font-size: 0.75rem;
+    margin-top: 4px;
+    display: none;
+}
+
+.form-group.error .error-hint {
+    display: block;
+}
+
+/* Поле информации о поле */
+.field-info {
+    color: var(--text-light);
+    font-size: 0.75rem;
+    margin-top: 4px;
+    font-style: italic;
+}
+
+/* Поле пароля */
+.password-wrapper {
+    position: relative;
+    display: flex;
+    align-items: center;
+}
+
+.password-wrapper input {
+    padding-right: 40px !important;
+}
+
+.toggle-password {
+    position: absolute;
+    right: 12px;
+    cursor: pointer;
+    user-select: none;
+    opacity: 0.6;
+}
+
+.toggle-password:hover {
+    opacity: 1;
+}
+
+/* ===== МОДАЛЬНОЕ ОКНО ВЫБОРА ТИПА КОМПАНИИ ===== */
+.modal-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.5);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 1000;
+    animation: fadeIn 0.2s ease-out;
+}
+
+.modal-overlay.hidden {
+    display: none;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+.modal-content {
+    background: var(--card);
+    padding: 2rem;
+    border-radius: var(--radius);
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2);
+    max-width: 450px;
+    width: 90%;
+    animation: slideUp 0.3s ease-out;
+}
+
+@keyframes slideUp {
+    from { transform: translateY(20px); opacity: 0; }
+    to { transform: translateY(0); opacity: 1; }
+}
+
+.modal-content h3 {
+    margin: 0 0 0.5rem;
+    font-size: 1.3rem;
+    color: var(--primary);
+    text-align: center;
+}
+
+.modal-subtitle {
+    color: var(--text-light);
+    font-size: 0.9rem;
+    text-align: center;
+    margin-bottom: 1.5rem;
+}
+
+.modal-buttons {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.modal-btn {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    padding: 1rem 1.2rem;
+    background: #f8fafc;
+    border: 2px solid var(--border);
+    border-radius: 12px;
+    cursor: pointer;
+    transition: all 0.2s;
+    text-align: left;
+    width: 100%;
+    margin: 0;
+}
+
+.modal-btn:hover {
+    border-color: var(--primary-accent);
+    background: #eff6ff;
+    transform: translateY(-2px);
+}
+
+.modal-btn-icon {
+    font-size: 2rem;
+    flex-shrink: 0;
+}
+
+.modal-btn-text {
+    display: flex;
+    flex-direction: column;
+}
+
+.modal-btn-text strong {
+    font-size: 1.1rem;
+    color: var(--primary);
+}
+
+.modal-btn-text small {
+    font-size: 0.8rem;
+    color: var(--text-light);
+    margin-top: 2px;
+}
+
+.modal-close-btn {
+    background: transparent;
+    color: var(--text-light);
+    border: 1px solid var(--border);
+    margin-top: 1.5rem;
+    padding: 0.8rem;
+}
+
+.modal-close-btn:hover {
+    background: var(--error-bg);
+    color: var(--error-text);
+    border-color: var(--error-border);
+}
+
+/* ===== ПОЛЕ НАЗВАНИЯ КОМПАНИИ ===== */
+.company-input-wrapper {
+    position: relative;
+    display: flex;
+    align-items: center;
+}
+
+.company-input-wrapper input {
+    padding-right: 80px !important;
+}
+
+.company-type-badge {
+    position: absolute;
+    right: 45px;
+    top: 50%;
+    transform: translateY(-50%);
+    padding: 4px 10px;
+    border-radius: 6px;
+    font-size: 0.75rem;
+    font-weight: 600;
+    text-transform: uppercase;
+}
+
+.company-type-badge.hidden {
+    display: none;
+}
+
+.ip-badge {
+    background: #dbeafe;
+    color: #1e40af;
+}
+
+.ooo-badge {
+    background: #fce7f3;
+    color: #9d174d;
+}
+
+.change-type-btn {
+    position: absolute;
+    right: 8px;
+    top: 50%;
+    transform: translateY(-50%);
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    font-size: 1.2rem;
+    padding: 4px 8px;
+    border-radius: 4px;
+    transition: all 0.2s;
+    width: auto;
+    margin: 0;
+}
+
+.change-type-btn:hover {
+    background: #f1f5f9;
+    transform: translateY(-50%) rotate(90deg);
+}
+
+/* 📱 Адаптивность для мобильных */
+@media (max-width: 600px) {
+    body {
+        padding: 10px;
+        align-items: flex-start;
+        padding-top: 40px;
+    }
+
+    .card {
+        padding: 1.5rem;
+        box-shadow: none;
+        border: 1px solid var(--border);
+    }
+
+    .login-header {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 10px;
+    }
+
+    .login-logo {
+        height: 50px;
+    }
+
+    .login-title-block h2 {
+        font-size: 1.3rem;
+    }
+
+    input, button {
+        padding: 0.8rem;
+        font-size: 16px;
+    }
+
+    .modal-content {
+        padding: 1.5rem;
+    }
+
+    .modal-btn {
+        padding: 0.9rem 1rem;
+    }
+
+    .modal-btn-icon {
+        font-size: 1.5rem;
+    }
+}
+
+/* ===== FORGOT/RESET PASSWORD ===== */
+.links a:first-child {
+    font-weight: 600;
+    color: var(--primary);
+}
+
+/* PRIVACY PAGE */
+.privacy-content {
+    text-align: left;
+    font-size: 0.95rem;
+    line-height: 1.6;
+    color: var(--text);
+}
+
+.privacy-content h3 {
+    margin: 1.5rem 0 0.5rem;
+    color: var(--primary);
+    font-size: 1.1rem;
+}
+
+.privacy-content ul {
+    margin: 0.5rem 0 1rem 1.5rem;
+    padding: 0;
+}
+
+.privacy-content li {
+    margin-bottom: 0.3rem;
+    color: var(--text-light);
+}
+
+.privacy-content a {
+    color: var(--primary-accent);
+    text-decoration: none;
+}
+
+.privacy-content a:hover {
+    text-decoration: underline;
+}
+/* ===== PENDING-APPROVAL.PAGE ===== */
+
+.pending-content {
+    text-align: center;
+    padding-top: 10px;
+}
+
+.status-icon {
+    font-size: 3rem;
+    margin-bottom: 15px;
+    display: block;
+    animation: pulse 2s infinite;
+}
+
+@keyframes pulse {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0.6; }
+}
+
+.pending-content h3 {
+    margin: 0 0 15px;
+    color: var(--primary);
+    font-size: 1.2rem;
+}
+
+.pending-content p {
+    color: var(--text-light);
+    font-size: 0.95rem;
+    line-height: 1.5;
+    margin-bottom: 20px;
+}
+
+.info-block {
+    background: #f8fafc;
+    padding: 15px 20px;
+    border-radius: 8px;
+    margin: 20px 0;
+    text-align: left;
+    border: 1px solid var(--border);
+}
+
+.info-row {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 10px;
+    font-size: 0.9rem;
+}
+
+.info-row:last-child {
+    margin-bottom: 0;
+}
+
+.info-label {
+    font-weight: 600;
+    color: var(--text-light);
+}
+
+.info-value {
+    color: var(--text);
+    font-weight: 500;
+    text-align: right;
+}
+
+.pending-note {
+    font-size: 0.85rem !important;
+    color: #94a3b8 !important;
+    margin-bottom: 20px !important;
+}
+
+/* Кнопка предупреждения */
+.btn-warning {
+    background: #f59e0b !important;
+    color: #fff !important;
+}
+
+.btn-warning:hover {
+    background: #d97706 !important;
+    transform: translateY(-1px);
+}
+
+/* Адаптивность */
+@media (max-width: 600px) {
+    .info-row {
+        flex-direction: column;
+        gap: 4px;
+    }
+    
+    .info-value {
+        text-align: left;
+    }
+    
+    .status-icon {
+        font-size: 2.5rem;
+    }
+}
