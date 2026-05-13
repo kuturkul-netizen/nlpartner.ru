@@ -1,0 +1,67 @@
+# 🌐 GitHub Pages / Jekyll
+_site/
+.sass-cache/
+.jekyll-cache/
+.jekyll-metadata
+Gemfile.lock
+/vendor/
+
+# 🔐 Секреты и конфиги (никогда не коммитьте!)
+.env
+.env.local
+.env.*.local
+*.key
+*.pem
+config.local.*
+secrets.json
+firebase-config.js
+
+# 🖥️ ОС и редакторы
+.DS_Store
+Thumbs.db
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# 📦 Зависимости (если используете сборку)
+node_modules/
+bower_components/
+package-lock.json  # опционально: можно коммитить для CI
+yarn.lock          # опционально
+
+# 🗂️ Сборка и артефакты
+dist/
+build/
+out/
+*.map
+*.log
+coverage/
+.nyc_output/
+
+# 🗜️ Временные и системные файлы
+*.tmp
+*.temp
+.DS_Store?
+._*
+.Trashes
+ehthumbs.db
+
+# 📁 Локальные файлы разработки
+*.local.html
+config.dev.js
+*.bak
+*.orig
+
+# 🗃️ Базы данных (если есть бэкенд)
+*.sqlite
+*.sqlite3
+*.db
+db/
+*.sql
+
+# 📦 Архивы (если не нужны в репо)
+*.zip
+*.tar.gz
+*.rar
